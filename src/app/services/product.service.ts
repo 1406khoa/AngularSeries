@@ -13,6 +13,7 @@ export class ProductService {
       name: 'product1',
       quantity: 3,
       price: 300,
+      description: "this is product 1..."
     },
 
     {
@@ -20,17 +21,30 @@ export class ProductService {
       name: 'product2',
       quantity: 3,
       price: 200,
+      description: "this is product 1..."
     },
     {
       id: 3,
       name: 'product3',
       quantity: 3,
       price: 100,
+      description: "this is product 1..."
     },
   ]
 
   getProduct(){
     return this.products
+  }
+
+
+
+  getProductById(id : number | string){
+    if( typeof id === 'string' ){
+      id  = parseInt(id)
+    }
+
+    const product = this.products.find((product)=> product.id === id)
+    return product || {}
   }
 
   buyAll(product: any){
@@ -39,6 +53,7 @@ export class ProductService {
 
 
   }
+
 
   buy(product: any){
 

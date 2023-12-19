@@ -14,6 +14,7 @@ export class ProductComponent {
   @Output() onBuy = new EventEmitter();
   @Output() onDelete = new EventEmitter();
   @Output() onBuyAll = new EventEmitter();
+  @Output() onViewDetail = new EventEmitter();
 
   buy(){
     this.onBuy.emit(this.product)
@@ -25,6 +26,10 @@ export class ProductComponent {
 
   deleteProduct(){
     this.onDelete.emit(this.product.id)
+  }
+
+  viewDetail(){
+    this.onViewDetail.emit()
   }
 
 }

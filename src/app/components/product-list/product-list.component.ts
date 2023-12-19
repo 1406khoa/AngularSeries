@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { ProductComponent } from '../product/product.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -11,7 +12,10 @@ import { ProductComponent } from '../product/product.component';
 })
 export class ProductListComponent {
 
-  constructor(private productService: ProductService){}
+  constructor(
+    private productService: ProductService,
+    private router: Router
+    ){}
 
   products: any = []
   temp: any = 0
@@ -33,6 +37,12 @@ export class ProductListComponent {
     this.productService.deleteProduct(id)
     this.products = this.productService.getProduct()
   }
+
+  viewDetail(id: string){
+    this.router.navigate(["/products", id])
+  }
+
+
 
 
 }
